@@ -1,0 +1,793 @@
+ATmega8
+	sig=$1E9307
+	if=isp,hvpp
+
+ATmega8A
+	sig=$1E9307
+	if=isp,hvpp
+
+ATmega16
+	sig=$1E9403
+	if=isp,hvpp,mj
+	id=$0940303F
+
+ATmega16A
+	sig=$1E9403
+	if=isp,hvpp,mj
+	id=$0940303F
+
+ATmega32
+	sig=$1E9502
+	if=isp,hvpp,mj
+	id=$0950203F
+
+ATmega32A
+	sig=$1E9502
+	if=isp,hvpp,mj
+	id=$0950203F
+
+ATmega64
+	sig=$1E9602
+	if=isp,hvpp,mj
+	id=$0960203F
+
+ATmega64A
+	sig=$1E9602
+	if=isp,hvpp,mj
+	id=$0960203F
+
+ATmega128
+	sig=$1E9702
+	if=isp,hvpp,mj
+	id=$0970203F
+
+ATmega128A
+	sig=$1E9702
+	if=isp,hvpp,mj
+	id=$0970203F
+
+ATmega640
+	sig=$1E9608
+	if=isp,hvpp,mj
+	id=$0960803F
+
+ATmega1280
+	sig=$1E9703
+	if=isp,hvpp,mj
+	id=$0970303F
+
+ATmega2560
+	sig=$1E9801
+	if=isp,hvpp,mj
+	id=$0980103F
+
+ATmega1281
+	sig=$1E9704
+	if=isp,hvpp,mj
+	id=$0970403F
+
+ATmega2561
+	sig=$1E9802
+	if=isp,hvpp,mj
+	id=$0980203F
+
+ATmega161
+	sig=$1E9401
+	if=isp,hvpp
+
+ATmega162
+	sig=$1E9404
+	if=isp,hvpp,mj
+	id=$0940403F
+
+ATmega163
+	sig=$1E9402
+	if=isp,hvpp
+
+ATmega323
+	sig=$1E9501
+	if=isp,hvpp,mj
+	id=$0950103F
+
+ATmega164A
+	sig=$1E940F
+	if=isp,hvpp,mj
+	id=$0940a03F
+
+ATmega164P
+	sig=$1E940a
+	if=isp,hvpp,mj
+	id=$0940a03F
+
+ATmega164PA
+	sig=$1E940a
+	if=isp,hvpp,mj
+	id=$0940a03F
+
+ATmega324A
+	sig=$1E9515
+	if=isp,hvpp,mj
+	id=$0951103F
+
+ATmega324P
+	sig=$1E9508
+	if=isp,hvpp,mj
+	id=$0950803F
+
+ATmega324PA
+	sig=$1E9511
+	if=isp,hvpp,mj
+	id=$0951103F
+
+ATmega644
+	sig=$1E9609
+	if=isp,hvpp,mj
+	id=$0960903f
+
+ATmega644A
+	sig=$1E9609
+	if=isp,hvpp,mj
+	id=$0960A03f
+
+ATmega644P
+	sig=$1E960A
+	if=isp,hvpp,mj
+	id=$0960A03f
+
+ATmega644PA
+	sig=$1E960A
+	if=isp,hvpp,mj
+	id=$0960A03f
+
+ATmega1284
+	sig=$1E9706
+	if=isp,hvpp,mj
+	id=$0970503F
+
+ATmega1284P
+	sig=$1E9705
+	if=isp,hvpp,mj
+	id=$0970503F
+
+ATmega165
+	sig=$1E9407
+	if=isp,hvpp,mj
+	id=$0940503F
+
+ATmega165A
+	sig=$1E9410
+	if=isp,hvpp,mj
+	id=$0940703F
+
+ATmega165P
+	sig=$1E9407
+	if=isp,hvpp,mj
+	id=$0940703F
+
+ATmega165PA
+	sig=$1E9407
+	if=isp,hvpp,mj
+	id=$0940703F
+
+ATmega325
+	sig=$1E9505
+	if=isp,hvpp,mj
+	id=$0950503F
+
+ATmega325A
+	sig=$1E9505
+	if=isp,hvpp,mj
+	id=$0950D03F
+
+ATmega325P
+	sig=$1E950D
+	if=isp,hvpp,mj
+	id=$0950D03F
+
+ATmega645
+	sig=$1E9605
+	if=isp,hvpp,mj
+	id=$0960503F
+
+ATmega645A
+	sig=$1E9605
+	if=isp,hvpp,mj
+	id=$0960D03F
+
+ATmega3250
+	sig=$1E9506
+	if=isp,hvpp,mj
+	id=$0950603F
+
+ATmega3250P
+	sig=$1E950E
+	if=isp,hvpp,mj
+	id=$0950E03F
+
+ATmega6450
+	sig=$1E9606
+	if=isp,hvpp,mj
+	id=$0960603F
+
+ATmega6450A
+	sig=$1E9606
+	if=isp,hvpp,mj
+	id=$0960E03F
+
+ATmega8515
+	sig=$1E9306
+	if=isp,hvpp
+
+ATmega8535
+	sig=$1E9308
+	if=isp,hvpp
+
+ATmega406
+	sig=$1E9507
+	if=hvpp,mj
+	id=$0950703F
+
+ATmega48
+	sig=$1E9205
+	if=isp,hvpp,dw
+	id=$9205
+
+ATmega48A
+	sig=$1E9205
+	if=isp,hvpp,dw
+	id=$920A
+
+ATmega48P
+	sig=$1E920A
+	if=isp,hvpp,dw
+	id=$920A
+
+ATmega48PA
+	sig=$1E920A
+	if=isp,hvpp,dw
+	id=$920A
+
+ATmega88
+	sig=$1E930A
+	if=isp,hvpp,dw
+	id=$930A
+
+ATmega88A
+	sig=$1E930A
+	if=isp,hvpp,dw
+	id=$930F
+
+ATmega88P
+	sig=$1E930F
+	if=isp,hvpp,dw
+	id=$930F
+
+ATmega88PA
+	sig=$1E930F
+	if=isp,hvpp,dw
+	id=$930F
+
+ATmega168
+	sig=$1E9406
+	if=isp,hvpp,dw
+	id=$9406
+
+ATmega168A
+	sig=$1E9406
+	if=isp,hvpp,dw
+	id=$940B
+
+ATmega168P
+	sig=$1E940B
+	if=isp,hvpp,dw
+	id=$940B
+
+ATmega168PA
+	sig=$1E940B
+	if=isp,hvpp,dw
+	id=$940B
+
+ATmega328
+	sig=$1E9514
+	if=isp,hvpp,dw
+	id=$950F
+
+ATmega328P
+	sig=$1E950F
+	if=isp,hvpp,dw
+	id=$950F
+
+ATmega169
+	sig=$1E9405
+	if=isp,hvpp,mj
+	id=$0940503F
+
+ATmega169A
+	sig=$1E9411
+	if=isp,hvpp,mj
+	id=$0940503F
+
+ATmega169P
+	sig=$1E9405
+	if=isp,hvpp,mj
+	id=$0940503F
+
+ATmega169PA
+	sig=$1E9405
+	if=isp,hvpp,mj
+	id=$0940503F
+
+ATmega329
+	sig=$1E9503
+	if=isp,hvpp,mj
+	id=$0950303F
+
+ATmega329A
+	sig=$1E9503
+	if=isp,hvpp,mj
+	id=$0950B03F
+
+ATmega329P
+	sig=$1E950B
+	if=isp,hvpp,mj
+	id=$0950B03F
+
+ATmega329PA
+	sig=$1E950B
+	if=isp,hvpp,mj
+	id=$0950B03F
+
+ATmega649
+	sig=$1E9603
+	if=isp,hvpp,mj
+	id=$0960303F
+
+ATmega649A
+	sig=$1E9603
+	if=isp,hvpp,mj
+	id=$0960B03F
+
+ATmega649P
+	sig=$1E960B
+	if=isp,hvpp,mj
+	id=$0960B03F
+
+ATmega3290
+	sig=$1E9504
+	if=isp,hvpp,mj
+	id=$0950403F
+
+ATmega6490A
+	sig=$1E9604
+	if=isp,hvpp,mj
+	id=$0960C03F
+
+ATmega3290P
+	sig=$1E950C
+	if=isp,hvpp,mj
+	id=$0950C03F
+
+ATmega6490
+	sig=$1E9604
+	if=isp,hvpp,mj
+	id=$0960403F
+
+ATmega8HVA
+	sig=$1E9310
+	if=isp,hvsp,dw
+	id=$9310
+
+ATmega16HVA
+	sig=$1E940C
+	if=isp,hvsp,dw
+	id=$940C
+
+ATmega16HVA2
+	sig=$1E940E
+	if=isp,hvsp,dw
+	id=$940C
+
+ATmega16HVB
+	sig=$1E940D
+	if=isp,hvpp,dw
+	id=$940D
+
+ATmega32HVB
+	sig=$1E9510
+	if=isp,hvpp,dw
+	id=$9510
+
+ATmega64HVE
+	sig=$1E9610
+	if=isp,hvsp,dw
+	id=$9610
+
+ATmega32C1
+	sig=$1E9586
+	if=isp,hvpp,dw
+	id=$9586
+
+ATmega64C1
+	sig=$1E9686
+	if=isp,hvpp,dw
+	id=$9686
+
+ATmega16M1
+	sig=$1E9484
+	if=isp,hvpp,dw
+	id=$9484
+
+ATmega32M1
+	sig=$1E9584
+	if=isp,hvpp,dw
+	id=$9584
+
+ATmega64M1
+	sig=$1E9684
+	if=isp,hvpp,dw
+	id=$9684
+
+AT90CAN64
+	sig=$1E9681
+	if=isp,hvpp,mj
+	id=$0968103F
+
+AT90CAN32
+	sig=$1E9581
+	if=isp,hvpp,mj
+	id=$0958103F
+
+AT90CAN128
+	sig=$1E9781
+	if=isp,hvpp,mj
+	id=$0978103F
+
+AT90PWM1
+	sig=$1E9383
+	if=isp,hvpp,dw
+	id=$9383
+
+AT90PWM2
+	sig=$1E9381
+	if=isp,hvpp,dw
+	id=$9381
+
+AT90PWM3
+	sig=$1E9381
+	if=isp,hvpp,dw
+	id=$9381
+
+AT90PWM2B
+	sig=$1E9383
+	if=isp,hvpp,dw
+	id=$9383
+
+AT90PWM3B
+	sig=$1E9383
+	if=isp,hvpp,dw
+	id=$9383
+
+AT90PWM216
+	sig=$1E9483
+	if=isp,hvpp,dw
+	id=$9483
+
+AT90PWM316
+	sig=$1E9483
+	if=isp,hvpp,dw
+	id=$9483
+
+AT90PWM81
+	sig=$1E9388
+	if=isp,hvpp,dw
+	id=$9388
+
+AT90USB82
+	sig=$1E9382
+	if=isp,hvpp,dw
+	id=$9682
+
+AT90USB162
+	sig=$1E9482
+	if=isp,hvpp,dw
+	id=$9482
+
+AT90USB646
+	sig=$1E9682
+	if=isp,hvpp,mj
+	id=$0968203F
+
+AT90USB647
+	sig=$1E9682
+	if=isp,hvpp,mj
+	id=$0968203F
+
+AT90USB1286
+	sig=$1E9782
+	if=isp,hvpp,mj
+	id=$0978203F
+
+AT90USB1287
+	sig=$1E9782
+	if=isp,hvpp,mj
+	id=$0978203F
+
+ATmega8U2
+	sig=$1E9389
+	if=isp,hvpp,dw
+	id=$9389
+
+ATmega16U2
+	sig=$1E9489
+	if=isp,hvpp,dw
+	id=$9489
+
+ATmega32U2
+	sig=$1E958A
+	if=isp,hvpp,dw
+	id=$958A
+
+ATmega16U4
+	sig=$1E9488
+	if=isp,hvpp,mj
+	id=$0948803F
+
+ATmega32U4
+	sig=$1E9587
+	if=isp,hvpp,mj
+	id=$0958703F
+
+ATmega32U6
+	sig=$1E9588
+	if=isp,hvpp,mj
+	id=$0958803F
+
+ATtiny4
+	sig=$1E8F0A
+	if=tpi
+
+ATtiny5
+	sig=$1E8F09
+	if=tpi
+
+ATtiny9
+	sig=$1E9008
+	if=tpi
+
+ATtiny10
+	sig=$1E9003
+	if=tpi
+
+ATtiny20
+	sig=$1E910F
+	if=tpi
+
+ATtiny40
+	sig=$1E920E
+	if=tpi
+
+ATtiny11
+	sig=$1E9004
+	if=hvsp
+
+ATtiny12
+	sig=$1E9005
+	if=isp,hvsp
+
+ATtiny13
+	sig=$1E9007
+	if=isp,hvsp,dw
+	id=$9007
+
+ATtiny13A
+	sig=$1E9007
+	if=isp,hvsp,dw
+	id=$9007
+
+ATtiny15
+	sig=$1E9006
+	if=isp,hvsp
+
+ATtiny22
+	sig=$1E9106
+	if=isp,hvsp
+
+ATtiny2313
+	sig=$1E910A
+	if=isp,hvpp,dw
+	id=$910A
+
+ATtiny2313A
+	sig=$1E910A
+	if=isp,hvpp,dw
+	id=$910A
+
+ATtiny4313
+	sig=$1E920D
+	if=isp,hvpp,dw
+	id=$920D
+
+ATtiny43U
+	sig=$1E920C
+	if=isp,hvpp,dw
+	id=$920C
+
+ATtiny24
+	sig=$1E910B
+	if=isp,hvsp,dw
+	id=$910B
+
+ATtiny24A
+	sig=$1E910B
+	if=isp,hvsp,dw
+	id=$910B
+
+ATtiny44
+	sig=$1E9207
+	if=isp,hvsp,dw
+	id=$9207
+
+ATtiny44A
+	sig=$1E9207
+	if=isp,hvsp,dw
+	id=$9207
+
+ATtiny84
+	sig=$1E930C
+	if=isp,hvsp,dw
+	id=$930C
+
+ATtiny25
+	sig=$1E9108
+	if=isp,hvsp,dw
+	id=$9108
+
+ATtiny45
+	sig=$1E9206
+	if=isp,hvsp,dw
+	id=$9206
+
+ATtiny85
+	sig=$1E930B
+	if=isp,hvsp,dw
+	id=$930B
+
+ATtiny26
+	sig=$1E9109
+	if=isp,hvpp
+
+ATtiny261
+	sig=$1E910C
+	if=isp,hvpp,dw
+	id=$910C
+
+ATtiny261A
+	sig=$1E910C
+	if=isp,hvpp,dw
+	id=$910C
+
+ATtiny461
+	sig=$1E9208
+	if=isp,hvpp,dw
+	id=$9208
+
+ATtiny461A
+	sig=$1E9208
+	if=isp,hvpp,dw
+	id=$9208
+
+ATtiny861
+	sig=$1E930D
+	if=isp,hvpp,dw
+	id=$930D
+
+ATtiny861A
+	sig=$1E930D
+	if=isp,hvpp,dw
+	id=$930D
+
+ATtiny87
+	sig=$1E9387
+	if=isp,hvpp,dw
+	id=$9387
+
+ATtiny167
+	sig=$1E9487
+	if=isp,hvpp,dw
+	id=$9487
+
+ATtiny28
+	sig=$1E9107
+	if=hvpp
+
+ATtiny48
+	sig=$1E9209
+	if=isp,hvpp,dw
+	id=$9209
+
+ATtiny88
+	sig=$1E9311
+	if=isp,hvpp,dw
+	id=$9311
+
+ATxmega16A4
+	sig=$1E9441
+	if=pdi
+	id=0x0944103F
+
+ATxmega16D4
+	sig=$1E9442
+	if=pdi
+	id=0x0944203F
+
+ATxmega32A4
+	sig=$1E9541
+	if=pdi
+	id=0x0954103F
+
+ATxmega32D4
+	sig=$1E9542
+	if=pdi
+	id=0x0954203F
+
+ATxmega64A1
+	sig=$1E964E
+	if=pdi,xj
+	id=0x0964E03F
+
+ATxmega64A3
+	sig=$1E9642
+	if=pdi,xj
+	id=0x0964203F
+
+ATxmega64D3
+	sig=$1E964A
+	if=pdi
+	id=0x0964A03F
+
+ATxmega128A1
+	sig=$1E974C
+	if=pdi,xj
+	id=0x0974C03F
+
+ATxmega128A1U
+	sig=$1E974C
+	if=pdi,xj
+	id=0x0974C03F
+
+ATxmega128A3
+	sig=$1E9742
+	if=pdi,xj
+	id=0x0974203F
+
+ATxmega128D3
+	sig=$1E9748
+	if=pdi
+	id=0x0974803F
+
+ATxmega192A3
+	sig=$1E9744
+	if=pdi,xj
+	id=0x0974403F
+
+ATxmega192D3
+	sig=$1E9749
+	if=pdi
+	id=0x0974903F
+
+ATxmega256A3
+	sig=$1E9842
+	if=pdi,xj
+	id=0x0984203F
+
+ATxmega256A3B
+	sig=$1E9843
+	if=pdi,xj
+	id=0x0984303F
+
+ATxmega256D3
+	sig=$1E9844
+	if=pdi
+	id=0x0984403F
+
+

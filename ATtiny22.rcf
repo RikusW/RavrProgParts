@@ -1,0 +1,113 @@
+# vim:ts=4 sts=0 sw=4
+
+ADMIN
+	PART_NAME=ATtiny22
+	CORE_VERSION=V1
+	SPEED=1MHZ
+	SIGNATURE=$1E9106
+	TOGGLE_PIN=N
+	OSCCAL=
+	PROGIF=isp,hvsp
+
+MEMORY
+	FLASH=2048,0
+	EEPROM=128,0
+	IRAM=128,$60
+	ERAM=0,NA
+
+INTERRUPTS
+	$000=RESET
+	$001=INT0
+	$002=TIMER0_OVF0
+
+IO_MODULE
+	CPU
+		LIST=[SREG:SPL:MCUCR:MCUSR]
+	EEPROM
+		LIST=[EEAR:EEDR:EECR]
+	PORTB
+		LIST=[PORTB:DDRB:PINB]
+	TIMER_COUNTER_0
+		LIST=[TIMSK:TIFR:TCCR0:TCNT0]
+	WATCHDOG
+		LIST=[WDTCR]
+
+IO_PORTS
+	PINB=$36,PINB4-4,PINB3-3,PINB2-2,PINB1-1,PINB0-0
+	DDRB=$37,DDB4-4,DDB3-3,DDB2-2,DDB1-1,DDB0-0
+	PORTB=$38,PORTB4-4,PORTB3-3,PORTB2-2,PORTB1-1,PORTB0-0
+	EECR=$3C,EEMWE-2,EEWE-1,EERE-0
+	EEDR=$3D,EEDR7-7,EEDR6-6,EEDR5-5,EEDR4-4,EEDR3-3,EEDR2-2,EEDR1-1,EEDR0-0
+	EEAR=$3E,EEAR7-7,EEAR6-6,EEAR5-5,EEAR4-4,EEAR3-3,EEAR2-2,EEAR1-1,EEAR0-0
+	WDTCR=$41,WDTOE-4,WDE-3,WDP2-2,WDP1-1,WDP0-0
+	TCNT0=$52,TCNT07-7,TCNT06-6,TCNT05-5,TCNT04-4,TCNT03-3,TCNT02-2,TCNT01-1,TCNT00-0
+	TCCR0=$53,CS02-2,CS01-1,CS00-0
+	MCUSR=$54,EXTRF-1,PORF-0
+	MCUCR=$55,SE-5,SM-4,ISC01-1,ISC00-0
+	TIFR=$58,TOV0-1
+	TIMSK=$59,TOIE0-1
+	GIFR=$5A
+	GIMSK=$5B
+	SPL=$5D,SP7-7,SP6-6,SP5-5,SP4-4,SP3-3,SP2-2,SP1-1,SP0-0
+	SREG=$5F,I-7,T-6,H-5,S-4,V-3,N-2,Z-1,C-0
+
+STK500
+	IspChipErase
+		eraseDelay=100
+		pollMethod=0
+	IspProgramFlash
+		mode=$04
+		blockSize=64
+		delay=12
+		cmd1=$40
+		cmd2=$00
+		cmd3=$20
+		pollVal1=$FF
+		pollVal2=$00
+	IspProgramEeprom
+		mode=$04
+		blockSize=64
+		delay=20
+		cmd1=$C0
+		cmd2=$00
+		cmd3=$A0
+		pollVal1=$00
+		pollVal2=$FF
+	HvspControlStack=4C0C1C2C3C647400687868680000687878006D0C804020101108040203080400
+	HvspEnterProgMode
+		stabDelay=100
+		cmdexeDelay=0
+		synchCycles=6
+		latchCycles=1
+		toggleVtg=0
+		powoffDelay=25
+		resetDelay1=1
+		resetDelay2=0
+	HvspChipErase
+		pollTimeout=40
+		eraseTime=0
+	HvspProgramFlash
+		mode=0
+		blockSize=256
+		pollTimeout=3
+	HvspProgramEeprom
+		mode=0
+		blockSize=256
+		pollTimeout=5
+
+STK600
+
+FUSES
+	LOW=$DE
+		SPIEN=$20,Serial program downloading (SPI) enabled
+		CKSEL=$01,Clock Select
+			$00=Internal RC oscillator enabled
+			$01=External clock enabled
+
+LOCKBITS
+	LB=$06,Memory Lock
+		$00=Further programming and verification disabled
+		$01=Further programming disabled
+		$03=No memory lock features enable
+
+

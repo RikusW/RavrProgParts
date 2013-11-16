@@ -1,0 +1,223 @@
+# vim:ts=4 sts=0 sw=4
+
+ADMIN
+	PART_NAME=ATtiny13
+	CORE_VERSION=V2a
+	SPEED=16MHZ
+	SIGNATURE=$1E9007
+	TOGGLE_PIN=Y
+	OSCCAL=9.6,4.8
+	PROGIF=isp,hvsp,dw
+
+MEMORY
+	FLASH=1024,32
+	EEPROM=64,4
+	IRAM=64,$60
+	ERAM=0,NA
+
+BOOT
+	RWW=
+	NRWW=
+
+INTERRUPTS
+	$000=RESET
+	$001=INT0
+	$002=PCINT0
+	$003=TIM0_OVF
+	$004=EE_RDY
+	$005=ANA_COMP
+	$006=TIM0_COMPA
+	$007=TIM0_COMPB
+	$008=WDT
+	$009=ADC
+
+OCD
+	REV=0
+	OCDR=$2e
+	ID=$9007
+	IF=DebugWire
+	ucRead=F801F0714283FEAF
+	ucWrite=8800B07100837CAA
+	ucExtRead=0000000000000000000000000000000000000000
+	ucExtWrite=0000000000000000000000000000000000000000
+	ucEepromInst=BBFEBBEEBBCCB20DBC0EB40EBA0DBBBC99E1BBAC
+	ucFlashInst=B40E1E
+	ucUpperExtIOLoc=$00
+
+IO_MODULE
+	AD_CONVERTER
+		LIST=[ADMUX:ADCSRA:ADCH:ADCL:ADCSRB:DIDR0]
+	ANALOG_COMPARATOR
+		LIST=[ADCSRB:ACSR:DIDR0]
+	CPU
+		LIST=[SREG:SPL:MCUCR:MCUSR:OSCCAL:CLKPR:DWDR:SPMCSR]
+	EEPROM
+		LIST=[EEAR:EEDR:EECR]
+	EXTERNAL_INTERRUPT
+		LIST=[MCUCR:GIMSK:GIFR:PCMSK]
+	PORTB
+		LIST=[PORTB:DDRB:PINB]
+	TIMER_COUNTER_0
+		LIST=[TIMSK0:TIFR0:OCR0A:TCCR0A:TCNT0:TCCR0B:OCR0B:GTCCR]
+	WATCHDOG
+		LIST=[WDTCR]
+
+IO_PORTS
+	ADCSRB=$23,ACME-6,ADTS2-2,ADTS1-1,ADTS0-0
+	ADCL=$24,ADCL7-7,ADCL6-6,ADCL5-5,ADCL4-4,ADCL3-3,ADCL2-2,ADCL1-1,ADCL0-0
+	ADCH=$25,ADCH7-7,ADCH6-6,ADCH5-5,ADCH4-4,ADCH3-3,ADCH2-2,ADCH1-1,ADCH0-0
+	ADCSRA=$26,ADEN-7,ADSC-6,ADATE-5,ADIF-4,ADIE-3,ADPS2-2,ADPS1-1,ADPS0-0
+	ADMUX=$27,REFS0-6,ADLAR-5,MUX1-1,MUX0-0
+	ACSR=$28,ACD-7,ACBG-6,ACO-5,ACI-4,ACIE-3,ACIS1-1,ACIS0-0
+	DIDR0=$34,ADC0D-5,ADC2D-4,ADC3D-3,ADC1D-2,AIN1D-1,AIN0D-0
+	PCMSK=$35,PCINT5-5,PCINT4-4,PCINT3-3,PCINT2-2,PCINT1-1,PCINT0-0
+	PINB=$36,PINB5-5,PINB4-4,PINB3-3,PINB2-2,PINB1-1,PINB0-0
+	DDRB=$37,DDB5-5,DDB4-4,DDB3-3,DDB2-2,DDB1-1,DDB0-0
+	PORTB=$38,PORTB5-5,PORTB4-4,PORTB3-3,PORTB2-2,PORTB1-1,PORTB0-0
+	EECR=$3C,EEPM1-5,EEPM0-4,EERIE-3,EEMWE-2,EEWE-1,EERE-0
+	EEDR=$3D,EEDR7-7,EEDR6-6,EEDR5-5,EEDR4-4,EEDR3-3,EEDR2-2,EEDR1-1,EEDR0-0
+	EEAR=$3E,EEAR5-5,EEAR4-4,EEAR3-3,EEAR2-2,EEAR1-1,EEAR0-0
+	WDTCR=$41,WDTIF-7,WDTIE-6,WDP3-5,WDCE-4,WDE-3,WDP2-2,WDP1-1,WDP0-0
+	CLKPR=$46,CLKPCE-7,CLKPS3-3,CLKPS2-2,CLKPS1-1,CLKPS0-0
+	GTCCR=$48,TSM-7,PSR10-0
+	OCR0B=$49,OCR0B_7-7,OCR0B_6-6,OCR0B_5-5,OCR0B_4-4,OCR0B_3-3,OCR0B_2-2,OCR0B_1-1,OCR0B_0-0
+	DWDR=$4E,DWDR7-7,DWDR6-6,DWDR5-5,DWDR4-4,DWDR3-3,DWDR2-2,DWDR1-1,DWDR0-0
+	TCCR0A=$4F,COM0A1-7,COM0A0-6,COM0B1-5,COM0B0-4,WGM01-1,WGM00-0
+	OSCCAL=$51,CAL6-6,CAL5-5,CAL4-4,CAL3-3,CAL2-2,CAL1-1,CAL0-0
+	TCNT0=$52,TCNT0_7-7,TCNT0_6-6,TCNT0_5-5,TCNT0_4-4,TCNT0_3-3,TCNT0_2-2,TCNT0_1-1,TCNT0_0-0
+	TCCR0B=$53,FOC0A-7,FOC0B-6,WGM02-3,CS02-2,CS01-1,CS00-0
+	MCUSR=$54,WDRF-3,BORF-2,EXTRF-1,PORF-0
+	MCUCR=$55,PUD-6,SE-5,SM1-4,SM0-3,ISC01-1,ISC00-0
+	OCR0A=$56,OCR0A_7-7,OCR0A_6-6,OCR0A_5-5,OCR0A_4-4,OCR0A_3-3,OCR0A_2-2,OCR0A_1-1,OCR0A_0-0
+	SPMCSR=$57,CTPB-4,RFLB-3,PGWRT-2,PGERS-1,SPMEN-0
+	TIFR0=$58,OCF0B-3,OCF0A-2,TOV0-1
+	TIMSK0=$59,OCIE0B-3,OCIE0A-2,TOIE0-1
+	GIFR=$5A,INTF0-6,PCIF-5
+	GIMSK=$5B,INT0-6,PCIE-5
+	SPL=$5D,SP7-7,SP6-6,SP5-5,SP4-4,SP3-3,SP2-2,SP1-1,SP0-0
+	SREG=$5F,I-7,T-6,H-5,S-4,V-3,N-2,Z-1,C-0
+
+STK500
+	IspChipErase
+		eraseDelay=45
+		pollMethod=1
+	IspProgramFlash
+		mode=$41
+		blockSize=32
+		delay=10
+		cmd1=$40
+		cmd2=$4C
+		cmd3=$00
+		pollVal1=$00
+		pollVal2=$00
+	IspProgramEeprom
+		mode=$41
+		blockSize=4
+		delay=5
+		cmd1=$C1
+		cmd2=$C2
+		cmd3=$00
+		pollVal1=$00
+		pollVal2=$00
+	HvspControlStack=4C0C1C2C3C647466687868687A6A6878787D6D0C804020101108040203080400
+	HvspEnterProgMode
+		stabDelay=100
+		cmdexeDelay=0
+		synchCycles=6
+		latchCycles=1
+		toggleVtg=1
+		powoffDelay=25
+		resetDelay1=1
+		resetDelay2=0
+	HvspChipErase
+		pollTimeout=40
+		eraseTime=0
+	HvspProgramFlash
+		mode=$0B
+		blockSize=256
+		pollTimeout=5
+	HvspProgramEeprom
+		mode=$05
+		blockSize=256
+		pollTimeout=5
+
+STK600
+	IspChipErase
+		eraseDelay=45
+		pollMethod=1
+	IspProgramFlash
+		mode=$41
+		blockSize=32
+		delay=6
+		cmd1=$40
+		cmd2=$4C
+		cmd3=$00
+		pollVal1=$00
+		pollVal2=$00
+	IspProgramEeprom
+		mode=$41
+		blockSize=4
+		delay=5
+		cmd1=$C1
+		cmd2=$C2
+		cmd3=$00
+		pollVal1=$00
+		pollVal2=$00
+	HvspControlStack=4C0C1C2C3C647466687868687A6A6878787D6D0C804020101108040203080400
+	HvspEnterProgMode
+		stabDelay=100
+		cmdexeDelay=0
+		synchCycles=6
+		latchCycles=1
+		toggleVtg=1
+		powoffDelay=20
+		resetDelay1=0
+		resetDelay2=0
+	HvspChipErase
+		pollTimeout=40
+		eraseTime=0
+	HvspProgramFlash
+		mode=$0B
+		blockSize=256
+		pollTimeout=5
+	HvspProgramEeprom
+		mode=$05
+		blockSize=256
+		pollTimeout=5
+
+FUSES
+	HIGH
+		SELFPRGEN=$10,Self Programming enable
+		DWEN=$08,Debug Wire enable
+		BODLEVEL=$06,Enable BOD and select level
+			$00=Brown-out detection at VCC=4.3 V
+			$01=Brown-out detection at VCC=2.7 V
+			$02=Brown-out detection at VCC=1.8 V
+			$03=Brown-out detection disabled
+		RSTDISBL=$01,Reset Disabled (Enable PB5 as i/o pin)
+	LOW=$6A
+		SPIEN=$80,Serial program downloading (SPI) enabled
+		EESAVE=$40,Preserve EEPROM through the Chip Erase cycle
+		WDTON=$20,Watch-dog Timer always on
+		CKDIV8=$10,Divide clock by 8 internally
+		SUT_CKSEL=$0F,Select Clock Source
+			$00=Ext. Clock; Start-up time: 14 CK + 0 ms
+			$04=Ext. Clock; Start-up time: 14 CK + 4 ms
+			$08=Ext. Clock; Start-up time: 14 CK + 64 ms
+			$01=Int. RC Osc. 4.8 MHz; Start-up time: 14 CK + 0 ms
+			$05=Int. RC Osc. 4.8 MHz; Start-up time: 14 CK + 4 ms
+			$09=Int. RC Osc. 4.8 MHz; Start-up time: 14 CK + 64 ms
+			$02=Int. RC Osc. 9.6 MHz; Start-up time: 14 CK + 0 ms
+			$06=Int. RC Osc. 9.6 MHz; Start-up time: 14 CK + 4 ms
+			$0A=Int. RC Osc. 9.6 MHz; Start-up time: 14 CK + 64 ms
+			$03=Int. RC Osc. 128 kHz; Start-up time: 14 CK + 0 ms
+			$07=Int. RC Osc. 128 kHz; Start-up time: 14 CK + 4 ms
+			$0B=Int. RC Osc. 128 kHz; Start-up time: 14 CK + 64 ms
+
+LOCKBITS
+	LB=$03,Memory Lock
+		$00=Further programming and verification disabled
+		$02=Further programming disabled
+		$03=No memory lock features enabled
+
+

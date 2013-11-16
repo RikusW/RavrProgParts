@@ -1,0 +1,336 @@
+# vim:ts=4 sts=0 sw=4
+
+ADMIN
+	PART_NAME=ATmega8A
+	CORE_VERSION=V2E
+	SPEED=16MHZ
+	SIGNATURE=$1E9307
+	TOGGLE_PIN=N
+	OSCCAL=1.0,2.0,4.0,8.0
+	PROGIF=isp,hvpp
+
+MEMORY
+	FLASH=8192,64
+	EEPROM=512,4
+	IRAM=1024,$60
+	ERAM=0,NA
+
+BOOT
+	RWW=$0,$BFF
+	NRWW=$C00,$FFF
+	BOOTSIZES=$F80,$F00,$E00,$C00
+
+INTERRUPTS
+	$000=RESET
+	$001=INT0
+	$002=INT1
+	$003=TIMER2 COMP
+	$004=TIMER2 OVF
+	$005=TIMER1 CAPT
+	$006=TIMER1 COMPA
+	$007=TIMER1 COMPB
+	$008=TIMER1 OVF
+	$009=TIMER0 OVF
+	$00A=SPI, STC
+	$00B=USART, RXC
+	$00C=USART, UDRE
+	$00D=USART, TXC
+	$00E=ADC
+	$00F=EE_RDY
+	$010=ANA_COMP
+	$011=TWI
+	$012=SPM_RDY
+
+IO_MODULE
+	AD_CONVERTER
+		LIST=[ADMUX:ADCSRA:ADCH:ADCL]
+		LINK=[ADCH:ADCL]
+	ANALOG_COMPARATOR
+		LIST=[SFIOR:ACSR]
+	CPU
+		LIST=[SREG:SPH:SPL:MCUCR:MCUCSR:OSCCAL:SPMCR:SFIOR]
+		LINK=[SPH:SPL]
+	EEPROM
+		LIST=[EEARH:EEARL:EEDR:EECR]
+		LINK=[EEARH:EEARL]
+	EXTERNAL_INTERRUPT
+		LIST=[GICR:GIFR:MCUCR]
+	PORTB
+		LIST=[PORTB:DDRB:PINB]
+	PORTC
+		LIST=[PORTC:DDRC:PINC]
+	PORTD
+		LIST=[PORTD:DDRD:PIND]
+	SPI
+		LIST=[SPDR:SPSR:SPCR]
+	TIMER_COUNTER_0
+		LIST=[TIMSK:TIFR:TCCR0:TCNT0]
+	TIMER_COUNTER_1
+		LIST=[TIMSK:TIFR:TCCR1A:TCCR1B:TCNT1H:TCNT1L:OCR1AH:OCR1AL:OCR1BH:OCR1BL:ICR1H:ICR1L]
+		LINK=[TCNT1H:TCNT1L];[OCR1AH:OCR1AL];[OCR1BH:OCR1BL];[ICR1H:ICR1L]
+	TIMER_COUNTER_2
+		LIST=[TIMSK:TIFR:TCCR2:TCNT2:OCR2:ASSR:SFIOR]
+	TWI
+		LIST=[TWBR:TWCR:TWSR:TWDR:TWAR]
+	USART
+		LIST=[UDR:UCSRA:UCSRB:UCSRC:UBRRH:UBRRL]
+		LINK=[UBRRH:UBRRL]
+	WATCHDOG
+		LIST=[WDTCR]
+
+IO_PORTS
+	TWBR=$20,TWBR7-7,TWBR6-6,TWBR5-5,TWBR4-4,TWBR3-3,TWBR2-2,TWBR1-1,TWBR0-0
+	TWSR=$21,TWS7-7,TWS6-6,TWS5-5,TWS4-4,TWS3-3,TWPS1-1,TWPS0-0
+	TWAR=$22,TWA6-7,TWA5-6,TWA4-5,TWA3-4,TWA2-3,TWA1-2,TWA0-1,TWGCE-0
+	TWDR=$23,TWD7-7,TWD6-6,TWD5-5,TWD4-4,TWD3-3,TWD2-2,TWD1-1,TWD0-0
+	ADCL=$24,ADCL7-7,ADCL6-6,ADCL5-5,ADCL4-4,ADCL3-3,ADCL2-2,ADCL1-1,ADCL0-0
+	ADCH=$25,ADCH7-7,ADCH6-6,ADCH5-5,ADCH4-4,ADCH3-3,ADCH2-2,ADCH1-1,ADCH0-0
+	ADCSRA=$26,ADEN-7,ADSC-6,ADFR-5,ADIF-4,ADIE-3,ADPS2-2,ADPS1-1,ADPS0-0
+	ADMUX=$27,REFS1-7,REFS0-6,ADLAR-5,MUX3-3,MUX2-2,MUX1-1,MUX0-0
+	ACSR=$28,ACD-7,ACBG-6,ACO-5,ACI-4,ACIE-3,ACIC-2,ACIS1-1,ACIS0-0
+	UBRRL=$29,UBRR7-7,UBRR6-6,UBRR5-5,UBRR4-4,UBRR3-3,UBRR2-2,UBRR1-1,UBRR0-0
+	UCSRB=$2A,RXCIE-7,TXCIE-6,UDRIE-5,RXEN-4,TXEN-3,UCSZ2-2,RXB8-1,TXB8-0
+	UCSRA=$2B,RXC-7,TXC-6,UDRE-5,FE-4,DOR-3,UPE-2,U2X-1,MPCM-0
+	UDR=$2C,UDR7-7,UDR6-6,UDR5-5,UDR4-4,UDR3-3,UDR2-2,UDR1-1,UDR0-0
+	SPCR=$2D,SPIE-7,SPE-6,DORD-5,MSTR-4,CPOL-3,CPHA-2,SPR1-1,SPR0-0
+	SPSR=$2E,SPIF-7,WCOL-6,SPI2X-0
+	SPDR=$2F,SPDR7-7,SPDR6-6,SPDR5-5,SPDR4-4,SPDR3-3,SPDR2-2,SPDR1-1,SPDR0-0
+	PIND=$30,PIND7-7,PIND6-6,PIND5-5,PIND4-4,PIND3-3,PIND2-2,PIND1-1,PIND0-0
+	DDRD=$31,DDD7-7,DDD6-6,DDD5-5,DDD4-4,DDD3-3,DDD2-2,DDD1-1,DDD0-0
+	PORTD=$32,PORTD7-7,PORTD6-6,PORTD5-5,PORTD4-4,PORTD3-3,PORTD2-2,PORTD1-1,PORTD0-0
+	PINC=$33,PINC6-6,PINC5-5,PINC4-4,PINC3-3,PINC2-2,PINC1-1,PINC0-0
+	DDRC=$34,DDC6-6,DDC5-5,DDC4-4,DDC3-3,DDC2-2,DDC1-1,DDC0-0
+	PORTC=$35,PORTC6-6,PORTC5-5,PORTC4-4,PORTC3-3,PORTC2-2,PORTC1-1,PORTC0-0
+	PINB=$36,PINB7-7,PINB6-6,PINB5-5,PINB4-4,PINB3-3,PINB2-2,PINB1-1,PINB0-0
+	DDRB=$37,DDB7-7,DDB6-6,DDB5-5,DDB4-4,DDB3-3,DDB2-2,DDB1-1,DDB0-0
+	PORTB=$38,PORTB7-7,PORTB6-6,PORTB5-5,PORTB4-4,PORTB3-3,PORTB2-2,PORTB1-1,PORTB0-0
+	EECR=$3C,EERIE-3,EEMWE-2,EEWE-1,EERE-0
+	EEDR=$3D,EEDR7-7,EEDR6-6,EEDR5-5,EEDR4-4,EEDR3-3,EEDR2-2,EEDR1-1,EEDR0-0
+	EEARL=$3E,EEAR7-7,EEAR6-6,EEAR5-5,EEAR4-4,EEAR3-3,EEAR2-2,EEAR1-1,EEAR0-0
+	EEARH=$3F,EEAR8-0
+	UBRRH=$40,UBRR11-3,UBRR10-2,UBRR9-1,UBRR8-0
+	UCSRC=$40,URSEL-7,UMSEL-6,UPM1-5,UPM0-4,USBS-3,UCSZ1-2,UCSZ0-1,UCPOL-0
+	WDTCR=$41,WDCE-4,WDE-3,WDP2-2,WDP1-1,WDP0-0
+	ASSR=$42,AS2-3,TCN2UB-2,OCR2UB-1,TCR2UB-0
+	OCR2=$43,OCR2_7-7,OCR2_6-6,OCR2_5-5,OCR2_4-4,OCR2_3-3,OCR2_2-2,OCR2_1-1,OCR2_0-0
+	TCNT2=$44,TCNT2_7-7,TCNT2_6-6,TCNT2_5-5,TCNT2_4-4,TCNT2_3-3,TCNT2_2-2,TCNT2_1-1,TCNT2_0-0
+	TCCR2=$45,FOC2-7,WGM20-6,COM21-5,COM20-4,WGM21-3,CS22-2,CS21-1,CS20-0
+	ICR1L=$46,ICR1L7-7,ICR1L6-6,ICR1L5-5,ICR1L4-4,ICR1L3-3,ICR1L2-2,ICR1L1-1,ICR1L0-0
+	ICR1H=$47,ICR1H7-7,ICR1H6-6,ICR1H5-5,ICR1H4-4,ICR1H3-3,ICR1H2-2,ICR1H1-1,ICR1H0-0
+	OCR1BL=$48,OCR1BL7-7,OCR1BL6-6,OCR1BL5-5,OCR1BL4-4,OCR1BL3-3,OCR1BL2-2,OCR1BL1-1,OCR1BL0-0
+	OCR1BH=$49,OCR1BH7-7,OCR1BH6-6,OCR1BH5-5,OCR1BH4-4,OCR1BH3-3,OCR1BH2-2,OCR1BH1-1,OCR1BH0-0
+	OCR1AL=$4A,OCR1AL7-7,OCR1AL6-6,OCR1AL5-5,OCR1AL4-4,OCR1AL3-3,OCR1AL2-2,OCR1AL1-1,OCR1AL0-0
+	OCR1AH=$4B,OCR1AH7-7,OCR1AH6-6,OCR1AH5-5,OCR1AH4-4,OCR1AH3-3,OCR1AH2-2,OCR1AH1-1,OCR1AH0-0
+	TCNT1L=$4C,TCNT1L7-7,TCNT1L6-6,TCNT1L5-5,TCNT1L4-4,TCNT1L3-3,TCNT1L2-2,TCNT1L1-1,TCNT1L0-0
+	TCNT1H=$4D,TCNT1H7-7,TCNT1H6-6,TCNT1H5-5,TCNT1H4-4,TCNT1H3-3,TCNT1H2-2,TCNT1H1-1,TCNT1H0-0
+	TCCR1B=$4E,ICNC1-7,ICES1-6,WGM13-4,WGM12-3,CS12-2,CS11-1,CS10-0
+	TCCR1A=$4F,COM1A1-7,COM1A0-6,COM1B1-5,COM1B0-4,FOC1A-3,FOC1B-2,WGM11-1,WGM10-0
+	SFIOR=$50,ADHSM-4,ACME-3,PUD-2,PSR2-1,PSR10-0
+	OSCCAL=$51,CAL7-7,CAL6-6,CAL5-5,CAL4-4,CAL3-3,CAL2-2,CAL1-1,CAL0-0
+	TCNT0=$52,TCNT07-7,TCNT06-6,TCNT05-5,TCNT04-4,TCNT03-3,TCNT02-2,TCNT01-1,TCNT00-0
+	TCCR0=$53,CS02-2,CS01-1,CS00-0
+	MCUCSR=$54,WDRF-3,BORF-2,EXTRF-1,PORF-0
+	MCUCR=$55,SE-7,SM2-6,SM1-5,SM0-4,ISC11-3,ISC10-2,ISC01-1,ISC00-0
+	TWCR=$56,TWINT-7,TWEA-6,TWSTA-5,TWSTO-4,TWWC-3,TWEN-2,TWIE-0
+	SPMCR=$57,SPMIE-7,RWWSB-6,RWWSRE-4,BLBSET-3,PGWRT-2,PGERS-1,SPMEN-0
+	TIFR=$58,OCF2-7,TOV2-6,ICF1-5,OCF1A-4,OCF1B-3,TOV1-2,TOV0-0
+	TIMSK=$59,OCIE2-7,TOIE2-6,TICIE1-5,OCIE1A-4,OCIE1B-3,TOIE1-2,TOIE0-0
+	GIFR=$5A,INTF1-7,INTF0-6
+	GICR=$5B,INT1-7,INT0-6,IVSEL-1,IVCE-0
+	SPL=$5D,SP7-7,SP6-6,SP5-5,SP4-4,SP3-3,SP2-2,SP1-1,SP0-0
+	SPH=$5E,SP10-2,SP9-1,SP8-0
+	SREG=$5F,I-7,T-6,H-5,S-4,V-3,N-2,Z-1,C-0
+
+STK500
+	IspChipErase
+		eraseDelay=20
+		pollMethod=0
+	IspProgramFlash
+		mode=$21
+		blockSize=64
+		delay=10
+		cmd1=$40
+		cmd2=$4C
+		cmd3=$20
+		pollVal1=$FF
+		pollVal2=$00
+	IspProgramEeprom
+		mode=$04
+		blockSize=128
+		delay=20
+		cmd1=$C0
+		cmd2=$00
+		cmd3=$A0
+		pollVal1=$FF
+		pollVal2=$FF
+	PPControlStack=0E1E0F1F2E3E2F3F4E5E4F5F6E7E6F7F667667776A7A6B7BBEFD000100000000
+	PpEnterProgMode
+		stabDelay=100
+		progModeDelay=0
+		latchCycles=5
+		toggleVtg=1
+		powerOffDelay=15
+		resetDelayMs=2
+		resetDelayUs=0
+	PpChipErase
+		pulseWidth=0
+		pollTimeout=20
+	PpProgramFlash
+		pollTimeout=10
+		mode=$0D
+		blockSize=256
+	PpProgramEeprom
+		pollTimeout=10
+		mode=$05
+		blockSize=256
+	PpProgramFuse
+		pulseWidth=0
+		pollTimeout=10
+	PpProgramLock
+		pulseWidth=0
+		pollTimeout=10
+
+STK600
+	IspChipErase
+		eraseDelay=10
+		pollMethod=0
+	IspProgramFlash
+		mode=$21
+		blockSize=64
+		delay=6
+		cmd1=$40
+		cmd2=$4C
+		cmd3=$20
+		pollVal1=$FF
+		pollVal2=$00
+	IspProgramEeprom
+		mode=$04
+		blockSize=128
+		delay=10
+		cmd1=$C0
+		cmd2=$00
+		cmd3=$A0
+		pollVal1=$FF
+		pollVal2=$FF
+	PPControlStack=0E1E0F1F2E3E2F3F4E5E4F5F6E7E6F7F667667776A7A6B7BBEFD000100000000
+	PpEnterProgMode
+		stabDelay=100
+		progModeDelay=0
+		latchCycles=5
+		toggleVtg=1
+		powerOffDelay=20
+		resetDelayMs=2
+		resetDelayUs=0
+	PpChipErase
+		pulseWidth=0
+		pollTimeout=20
+	PpProgramFlash
+		pollTimeout=10
+		mode=$0D
+		blockSize=256
+	PpProgramEeprom
+		pollTimeout=10
+		mode=$05
+		blockSize=256
+	PpProgramFuse
+		pulseWidth=0
+		pollTimeout=10
+	PpProgramLock
+		pulseWidth=0
+		pollTimeout=10
+
+FUSES
+	HIGH=$D9
+		RSTDISBL=$80,Reset Disabled (Enable PC6 as i/o pin)
+		WTDON=$40,Watch-dog Timer always on
+		SPIEN=$20,Serial program downloading (SPI) enabled
+		EESAVE=$08,Preserve EEPROM through the Chip Erase cycle
+		BOOTSZ=$06,Select Boot Size
+			$03=Boot Flash size=128 words Boot address=$0F80
+			$02=Boot Flash size=256 words Boot address=$0F00
+			$01=Boot Flash size=512 words Boot address=$0E00
+			$00=Boot Flash size=1024 words Boot address=$0C00
+		BOOTRST=$01,Boot Reset vector Enabled
+		CKOPT=$10,CKOPT fuse (operation dependent of CKSEL fuses)
+	LOW=$E1
+		BODLEVEL=$80,Brown out detector trigger level
+			$00=Brown-out detection at VCC=4.0 V
+			$01=Brown-out detection at VCC=2.7 V
+		BODEN=$40,Brown-out detection enabled
+		SUT_CKSEL=$3F,Select Clock Source
+			$00=Ext. Clock; Start-up time: 6 CK + 0 ms
+			$10=Ext. Clock; Start-up time: 6 CK + 4 ms
+			$20=Ext. Clock; Start-up time: 6 CK + 64 ms
+			$01=Int. RC Osc. 1 MHz; Start-up time: 6 CK + 0 ms
+			$11=Int. RC Osc. 1 MHz; Start-up time: 6 CK + 4 ms
+			$21=Int. RC Osc. 1 MHz; Start-up time: 6 CK + 64 ms; default value
+			$02=Int. RC Osc. 2 MHz; Start-up time: 6 CK + 0 ms
+			$12=Int. RC Osc. 2 MHz; Start-up time: 6 CK + 4 ms
+			$22=Int. RC Osc. 2 MHz; Start-up time: 6 CK + 64 ms
+			$03=Int. RC Osc. 4 MHz; Start-up time: 6 CK + 0 ms
+			$13=Int. RC Osc. 4 MHz; Start-up time: 6 CK + 4 ms
+			$23=Int. RC Osc. 4 MHz; Start-up time: 6 CK + 64 ms
+			$04=Int. RC Osc. 8 MHz; Start-up time: 6 CK + 0 ms
+			$14=Int. RC Osc. 8 MHz; Start-up time: 6 CK + 4 ms
+			$24=Int. RC Osc. 8 MHz; Start-up time: 6 CK + 64 ms
+			$05=Ext. RC Osc.         -  0.9 MHz; Start-up time: 18 CK + 0 ms
+			$15=Ext. RC Osc.         -  0.9 MHz; Start-up time: 18 CK + 4 ms
+			$25=Ext. RC Osc.         -  0.9 MHz; Start-up time: 18 CK + 64 ms
+			$35=Ext. RC Osc.         -  0.9 MHz; Start-up time: 6 CK + 4 ms
+			$06=Ext. RC Osc. 0.9 MHz -  3.0 MHz; Start-up time: 18 CK + 0 ms
+			$16=Ext. RC Osc. 0.9 MHz -  3.0 MHz; Start-up time: 18 CK + 4 ms
+			$26=Ext. RC Osc. 0.9 MHz -  3.0 MHz; Start-up time: 18 CK + 64 ms
+			$36=Ext. RC Osc. 0.9 MHz -  3.0 MHz; Start-up time: 6 CK + 4 ms
+			$07=Ext. RC Osc. 3.0 MHz -  8.0 MHz; Start-up time: 18 CK + 0 ms
+			$17=Ext. RC Osc. 3.0 MHz -  8.0 MHz; Start-up time: 18 CK + 4 ms
+			$27=Ext. RC Osc. 3.0 MHz -  8.0 MHz; Start-up time: 18 CK + 64 ms
+			$37=Ext. RC Osc. 3.0 MHz -  8.0 MHz; Start-up time: 6 CK + 4 ms
+			$08=Ext. RC Osc. 8.0 MHz - 12.0 MHz; Start-up time: 18 CK + 0 ms
+			$18=Ext. RC Osc. 8.0 MHz - 12.0 MHz; Start-up time: 18 CK + 4 ms
+			$28=Ext. RC Osc. 8.0 MHz - 12.0 MHz; Start-up time: 18 CK + 64 ms
+			$38=Ext. RC Osc. 8.0 MHz - 12.0 MHz; Start-up time: 6 CK + 4 ms
+			$09=Ext. Low-Freq. Crystal; Start-up time: 1K CK + 4 ms
+			$19=Ext. Low-Freq. Crystal; Start-up time: 1K CK + 64 ms
+			$29=Ext. Low-Freq. Crystal; Start-up time: 32K CK + 64 ms
+			$0A=Ext. Crystal/Resonator Low Freq.; Start-up time: 258 CK + 4 ms
+			$1A=Ext. Crystal/Resonator Low Freq.; Start-up time: 258 CK + 64 ms
+			$2A=Ext. Crystal/Resonator Low Freq.; Start-up time: 1K CK + 0 ms
+			$3A=Ext. Crystal/Resonator Low Freq.; Start-up time: 1K CK + 4 ms
+			$0B=Ext. Crystal/Resonator Low Freq.; Start-up time: 1K CK + 64 ms
+			$1B=Ext. Crystal/Resonator Low Freq.; Start-up time: 16K CK + 0 ms
+			$2B=Ext. Crystal/Resonator Low Freq.; Start-up time: 16K CK + 4 ms
+			$3B=Ext. Crystal/Resonator Low Freq.; Start-up time: 16K CK + 64 ms
+			$0C=Ext. Crystal/Resonator Medium Freq.; Start-up time: 258 CK + 4 ms
+			$1C=Ext. Crystal/Resonator Medium Freq.; Start-up time: 258 CK + 64 ms
+			$2C=Ext. Crystal/Resonator Medium Freq.; Start-up time: 1K CK + 0 ms
+			$3C=Ext. Crystal/Resonator Medium Freq.; Start-up time: 1K CK + 4 ms
+			$0D=Ext. Crystal/Resonator Medium Freq.; Start-up time: 1K CK + 64 ms
+			$1D=Ext. Crystal/Resonator Medium Freq.; Start-up time: 16K CK + 0 ms
+			$2D=Ext. Crystal/Resonator Medium Freq.; Start-up time: 16K CK + 4 ms
+			$3D=Ext. Crystal/Resonator Medium Freq.; Start-up time: 16K CK + 64 ms
+			$0E=Ext. Crystal/Resonator High Freq.; Start-up time: 258 CK + 4 ms
+			$1E=Ext. Crystal/Resonator High Freq.; Start-up time: 258 CK + 64 ms
+			$2E=Ext. Crystal/Resonator High Freq.; Start-up time: 1K CK + 0 ms
+			$3E=Ext. Crystal/Resonator High Freq.; Start-up time: 1K CK + 4 ms
+			$0F=Ext. Crystal/Resonator High Freq.; Start-up time: 1K CK + 64 ms
+			$1F=Ext. Crystal/Resonator High Freq.; Start-up time: 16K CK + 0 ms
+			$2F=Ext. Crystal/Resonator High Freq.; Start-up time: 16K CK + 4 ms
+			$3F=Ext. Crystal/Resonator High Freq.; Start-up time: 16K CK + 64 ms
+
+LOCKBITS
+	LB=$03,Memory Lock
+		$00=Further programming and verification disabled
+		$02=Further programming disabled
+		$03=No memory lock features enabled
+	BLB0=$0C,Boot Loader Protection Mode
+		$00=LPM and SPM prohibited in Application Section
+		$01=LPM prohibited in Application Section
+		$02=SPM prohibited in Application Section
+		$03=No lock on SPM and LPM in Application Section
+	BLB1=$30,Boot Loader Protection Mode
+		$00=LPM and SPM prohibited in Boot Section
+		$01=LPM prohibited in Boot Section
+		$02=SPM prohibited in Boot Section
+		$03=No lock on SPM and LPM in Boot Section
+
+

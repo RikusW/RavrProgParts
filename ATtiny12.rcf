@@ -1,0 +1,182 @@
+# vim:ts=4 sts=0 sw=4
+
+ADMIN
+	PART_NAME=ATtiny12
+	CORE_VERSION=V0E
+	SPEED=8MHZ
+	SIGNATURE=$1E9005
+	TOGGLE_PIN=N
+	OSCCAL=1.2
+	PROGIF=isp,hvsp
+
+MEMORY
+	FLASH=1024,0
+	EEPROM=64,2
+	IRAM=0,NA
+	ERAM=0,NA
+
+INTERRUPTS
+	$000=RESET
+	$001=INT0
+	$002=I/O_PINS
+	$003=TIMER0_OVF
+	$004=EE_RDY
+	$005=ANA_COMP
+
+IO_MODULE
+	ANALOG_COMPARATOR
+		LIST=[ACSR]
+	CPU
+		LIST=[SREG:MCUCR:MCUSR:OSCCAL]
+	EEPROM
+		LIST=[EEAR:EEDR:EECR]
+	EXTERNAL_INTERRUPT
+		LIST=[GIMSK:GIFR]
+	PORTB
+		LIST=[PORTB:DDRB:PINB]
+	TIMER_COUNTER_0
+		LIST=[TIMSK:TIFR:TCCR0:TCNT0]
+	WATCHDOG
+		LIST=[WDTCR]
+
+IO_PORTS
+	ACSR=$28,ACD-7,AINBG-6,ACO-5,ACI-4,ACIE-3,ACIS1-1,ACIS0-0
+	PINB=$36,PINB5-5,PINB4-4,PINB3-3,PINB2-2,PINB1-1,PINB0-0
+	DDRB=$37,DDB5-5,DDB4-4,DDB3-3,DDB2-2,DDB1-1,DDB0-0
+	PORTB=$38,PORTB4-4,PORTB3-3,PORTB2-2,PORTB1-1,PORTB0-0
+	EECR=$3C,EERIE-3,EEMWE-2,EEWE-1,EERE-0
+	EEDR=$3D,EEDR7-7,EEDR6-6,EEDR5-5,EEDR4-4,EEDR3-3,EEDR2-2,EEDR1-1,EEDR0-0
+	EEAR=$3E,EEAR5-5,EEAR4-4,EEAR3-3,EEAR2-2,EEAR1-1,EEAR0-0
+	WDTCR=$41,WDTOE-4,WDE-3,WDP2-2,WDP1-1,WDP0-0
+	OSCCAL=$51,CAL7-7,CAL6-6,CAL5-5,CAL4-4,CAL3-3,CAL2-2,CAL1-1,CAL0-0
+	TCNT0=$52,TCNT07-7,TCNT06-6,TCNT05-5,TCNT04-4,TCNT03-3,TCNT02-2,TCNT01-1,TCNT00-0
+	TCCR0=$53,CS02-2,CS01-1,CS00-0
+	MCUSR=$54,WDRF-3,BORF-2,EXTRF-1,PORF-0
+	MCUCR=$55,PUD-6,SE-5,SM-4,ISC01-1,ISC00-0
+	TIFR=$58,TOV0-1
+	TIMSK=$59,TOIE0-1
+	GIFR=$5A,INTF0-6,PCIF-5
+	GIMSK=$5B,INT0-6,PCIE-5
+	SREG=$5F,I-7,T-6,H-5,S-4,V-3,N-2,Z-1,C-0
+
+STK500
+	IspChipErase
+		eraseDelay=100
+		pollMethod=0
+	IspProgramFlash
+		mode=$04
+		blockSize=128
+		delay=10
+		cmd1=$40
+		cmd2=$00
+		cmd3=$20
+		pollVal1=$FF
+		pollVal2=$00
+	IspProgramEeprom
+		mode=$04
+		blockSize=64
+		delay=20
+		cmd1=$C0
+		cmd2=$00
+		cmd3=$A0
+		pollVal1=$FF
+		pollVal2=$FF
+	HvspControlStack=4C0C1C2C3C647400687868680000687878006D0C804020101108040203080400
+	HvspEnterProgMode
+		stabDelay=100
+		cmdexeDelay=0
+		synchCycles=6
+		latchCycles=1
+		toggleVtg=1
+		powoffDelay=25
+		resetDelay1=1
+		resetDelay2=0
+	HvspChipErase
+		pollTimeout=40
+		eraseTime=0
+	HvspProgramFlash
+		mode=0
+		blockSize=256
+		pollTimeout=3
+	HvspProgramEeprom
+		mode=0
+		blockSize=256
+		pollTimeout=5
+
+STK600
+	IspChipErase
+		eraseDelay=100
+		pollMethod=0
+	IspProgramFlash
+		mode=$02
+		blockSize=128
+		delay=10
+		cmd1=$40
+		cmd2=$00
+		cmd3=$20
+		pollVal1=$FF
+		pollVal2=$00
+	IspProgramEeprom
+		mode=$02
+		blockSize=64
+		delay=8
+		cmd1=$C0
+		cmd2=$00
+		cmd3=$A0
+		pollVal1=$FF
+		pollVal2=$FF
+	HvspControlStack=4C0C1C2C3C647400687868680000687878006D0C804020101108040203080400
+	HvspEnterProgMode
+		stabDelay=100
+		cmdexeDelay=0
+		synchCycles=6
+		latchCycles=1
+		toggleVtg=1
+		powoffDelay=20
+		resetDelay1=0
+		resetDelay2=50
+	HvspChipErase
+		pollTimeout=40
+		eraseTime=0
+	HvspProgramFlash
+		mode=0
+		blockSize=16
+		pollTimeout=3
+	HvspProgramEeprom
+		mode=0
+		blockSize=4
+		pollTimeout=5
+
+FUSES
+	LOW=$52
+		BODLEVEL=$80,Brown-out Detection Level
+			$01=Brown-out detection at VCC=1.8 V
+			$00=Brown-out detection at VCC=2.7 V
+		BODEN=$40,Brown-out Detection Enabled
+		SPIEN=$20,Serial program downloading (SPI) enabled
+		RSTDISBL=$10,External reset function of PB5 disabled
+		CKSEL=$0F,Clock Select
+			$0F=External Crystal / Ceramic Resonator
+			$0E=External Crystal / Ceramic Resonator
+			$0D=External Crystal / Ceramic Resonator
+			$0C=External Crystal / Ceramic Resonator
+			$0B=External Crystal / Ceramic Resonator
+			$0A=External Crystal / Ceramic Resonator
+			$09=External Low-Frequency Crystal
+			$08=External Low-Frequency Crystal
+			$07=External RC Oscillator
+			$06=External RC Oscillator
+			$05=External RC Oscillator
+			$04=Internal RC Oscillator
+			$03=Internal RC Oscillator
+			$02=Internal RC Oscillator
+			$01=External Clock
+			$00=External Clock
+
+LOCKBITS
+	LB=$06,Memory Lock
+		$00=Further programming and verification disabled
+		$01=Further programming disabled
+		$03=No memory lock features enable
+
+

@@ -1,0 +1,296 @@
+# vim:ts=4 sts=0 sw=4
+
+ADMIN
+	PART_NAME=ATtiny45
+	CORE_VERSION=V2a
+	SPEED=20MHZ
+	SIGNATURE=$1E9206
+	TOGGLE_PIN=Y
+	OSCCAL=8.0,6.4
+	PROGIF=isp,hvsp,dw
+
+MEMORY
+	FLASH=4096,64
+	EEPROM=256,4
+	IRAM=256,$60
+	ERAM=0,NA
+
+BOOT
+	RWW=$0,$0
+	NRWW=$0,$7FF
+
+INTERRUPTS
+	$000=RESET
+	$001=INT0
+	$002=PCINT0
+	$003=TIMER1_COMPA
+	$004=TIMER1_OVF
+	$005=TIMER0_OVF
+	$006=EE_RDY
+	$007=ANA_COMP
+	$008=ADC
+	$009=TIMER1_COMPB
+	$00A=TIMER0_COMPA
+	$00B=TIMER0_COMPB
+	$00C=WDT
+	$00D=USI_START
+	$00E=USI_OVF
+
+OCD
+	REV=1
+	OCDR=$22
+	ID=$9206
+	IF=DebugWire
+	ucRead=F8E1FFF1FBFFBFEF
+	ucWrite=C8E1FF71BB7FADEB
+	ucExtRead=0000000000000000000000000000000000000000
+	ucExtWrite=0000000000000000000000000000000000000000
+	ucEepromInst=BB FF BB EE BB CC B2 0D BC 02 B4 02 BA 0D BB BC 99 E1 BB AC
+	ucFlashInst=B4 02 12
+	ucUpperExtIOLoc=$00
+
+IO_MODULE
+	AD_CONVERTER
+		LIST=[ADMUX:ADCSRA:ADCH:ADCL:ADCSRB:DIDR0]
+	ANALOG_COMPARATOR
+		LIST=[ADCSRB:ACSR:DIDR0]
+	BOOT_LOAD
+		LIST=[SPMCSR]
+	CPU
+		LIST=[SREG:SPH:SPL:MCUCR:MCUSR:PRR:OSCCAL:PLLCSR:CLKPR:DWDR:GPIOR2:GPIOR1:GPIOR0]
+		LINK=[SPH:SPL]
+	EEPROM
+		LIST=[EEARL:EEARH:EEDR:EECR]
+	EXTERNAL_INTERRUPT
+		LIST=[MCUCR:GIMSK:GIFR:PCMSK]
+	PORTB
+		LIST=[PORTB:DDRB:PINB]
+	TIMER_COUNTER_0
+		LIST=[TIMSK:TIFR:TCCR0A:TCCR0B:TCNT0:OCR0A:OCR0B:GTCCR]
+	TIMER_COUNTER_1
+		LIST=[TCCR1:TCNT1:OCR1A:OCR1B:OCR1C:TIMSK:TIFR:GTCCR:DTPS:DT1A:DT1B]
+	USI
+		LIST=[USIBR:USIDR:USISR:USICR]
+	WATCHDOG
+		LIST=[WDTCR]
+
+IO_PORTS
+	ADCSRB=$23,BIN-7,ACME-6,IPR-5,ADTS2-2,ADTS1-1,ADTS0-0
+	ADCL=$24,ADCL7-7,ADCL6-6,ADCL5-5,ADCL4-4,ADCL3-3,ADCL2-2,ADCL1-1,ADCL0-0
+	ADCH=$25,ADCH7-7,ADCH6-6,ADCH5-5,ADCH4-4,ADCH3-3,ADCH2-2,ADCH1-1,ADCH0-0
+	ADCSRA=$26,ADEN-7,ADSC-6,ADATE-5,ADIF-4,ADIE-3,ADPS2-2,ADPS1-1,ADPS0-0
+	ADMUX=$27,REFS1-7,REFS0-6,ADLAR-5,REFS2-4,MUX3-3,MUX2-2,MUX1-1,MUX0-0
+	ACSR=$28,ACD-7,ACBG-6,ACO-5,ACI-4,ACIE-3,ACIS1-1,ACIS0-0
+	USICR=$2D,USISIE-7,USIOIE-6,USIWM1-5,USIWM0-4,USICS1-3,USICS0-2,USICLK-1,USITC-0
+	USISR=$2E,USISIF-7,USIOIF-6,USIPF-5,USIDC-4,USICNT3-3,USICNT2-2,USICNT1-1,USICNT0-0
+	USIDR=$2F,USIDR7-7,USIDR6-6,USIDR5-5,USIDR4-4,USIDR3-3,USIDR2-2,USIDR1-1,USIDR0-0
+	USIBR=$30,USIBR7-7,USIBR6-6,USIBR5-5,USIBR4-4,USIBR3-3,USIBR2-2,USIBR1-1,USIBR0-0
+	GPIOR0=$31,GPIOR07-7,GPIOR06-6,GPIOR05-5,GPIOR04-4,GPIOR03-3,GPIOR02-2,GPIOR01-1,GPIOR00-0
+	GPIOR1=$32,GPIOR17-7,GPIOR16-6,GPIOR15-5,GPIOR14-4,GPIOR13-3,GPIOR12-2,GPIOR11-1,GPIOR10-0
+	GPIOR2=$33,GPIOR27-7,GPIOR26-6,GPIOR25-5,GPIOR24-4,GPIOR23-3,GPIOR22-2,GPIOR21-1,GPIOR20-0
+	DIDR0=$34,ADC0D-5,ADC2D-4,ADC3D-3,ADC1D-2,AIN1D-1,AIN0D-0
+	PCMSK=$35,PCINT5-5,PCINT4-4,PCINT3-3,PCINT2-2,PCINT1-1,PCINT0-0
+	PINB=$36,PINB5-5,PINB4-4,PINB3-3,PINB2-2,PINB1-1,PINB0-0
+	DDRB=$37,DDB5-5,DDB4-4,DDB3-3,DDB2-2,DDB1-1,DDB0-0
+	PORTB=$38,PORTB5-5,PORTB4-4,PORTB3-3,PORTB2-2,PORTB1-1,PORTB0-0
+	EECR=$3C,EEPM1-5,EEPM0-4,EERIE-3,EEMPE-2,EEPE-1,EERE-0
+	EEDR=$3D,EEDR7-7,EEDR6-6,EEDR5-5,EEDR4-4,EEDR3-3,EEDR2-2,EEDR1-1,EEDR0-0
+	EEARL=$3E,EEAR7-7,EEAR6-6,EEAR5-5,EEAR4-4,EEAR3-3,EEAR2-2,EEAR1-1,EEAR0-0
+	EEARH=$3F,EEAR8-0
+	PRR=$40,PRTIM1-3,PRTIM0-2,PRUSI-1,PRADC-0
+	WDTCR=$41,WDIF-7,WDIE-6,WDP3-5,WDCE-4,WDE-3,WDP2-2,WDP1-1,WDP0-0
+	DWDR=$42,DWDR7-7,DWDR6-6,DWDR5-5,DWDR4-4,DWDR3-3,DWDR2-2,DWDR1-1,DWDR0-0
+	DTPS=$43,DTPS1-1,DTPS0-0
+	DT1B=$44,DTVH3-7,DTVH2-6,DTVH1-5,DTVH0-4,DTVL3-3,DTVL2-2,DTVL1-1,DTVL0-0
+	DT1A=$45,DTVH3-7,DTVH2-6,DTVH1-5,DTVH0-4,DTVL3-3,DTVL2-2,DTVL1-1,DTVL0-0
+	CLKPR=$46,CLKPCE-7,CLKPS3-3,CLKPS2-2,CLKPS1-1,CLKPS0-0
+	PLLCSR=$47,LSM-7,PCKE-2,PLLE-1,PLOCK-0
+	OCR0B=$48,OCR0_7-7,OCR0_6-6,OCR0_5-5,OCR0_4-4,OCR0_3-3,OCR0_2-2,OCR0_1-1,OCR0_0-0
+	OCR0A=$49,OCR0_7-7,OCR0_6-6,OCR0_5-5,OCR0_4-4,OCR0_3-3,OCR0_2-2,OCR0_1-1,OCR0_0-0
+	TCCR0A=$4A,COM0A1-7,COM0A0-6,COM0B1-5,COM0B0-4,WGM01-1,WGM00-0
+	OCR1B=$4B,OCR1B7-7,OCR1B6-6,OCR1B5-5,OCR1B4-4,OCR1B3-3,OCR1B2-2,OCR1B1-1,OCR1B0-0
+	GTCCR=$4C,TSM-7,PWM1B-6,COM1B1-5,COM1B0-4,FOC1B-3,FOC1A-2,PSR1-1,PSR0-0
+	OCR1C=$4D,OCR1C7-7,OCR1C6-6,OCR1C5-5,OCR1C4-4,OCR1C3-3,OCR1C2-2,OCR1C1-1,OCR1C0-0
+	OCR1A=$4E,OCR1A7-7,OCR1A6-6,OCR1A5-5,OCR1A4-4,OCR1A3-3,OCR1A2-2,OCR1A1-1,OCR1A0-0
+	TCNT1=$4F,TCNT1_7-7,TCNT1_6-6,TCNT1_5-5,TCNT1_4-4,TCNT1_3-3,TCNT1_2-2,TCNT1_1-1,TCNT1_0-0
+	TCCR1=$50,CTC1-7,PWM1A-6,COM1A1-5,COM1A0-4,CS13-3,CS12-2,CS11-1,CS10-0
+	OSCCAL=$51,CAL7-7,CAL6-6,CAL5-5,CAL4-4,CAL3-3,CAL2-2,CAL1-1,CAL0-0
+	TCNT0=$52,TCNT0_7-7,TCNT0_6-6,TCNT0_5-5,TCNT0_4-4,TCNT0_3-3,TCNT0_2-2,TCNT0_1-1,TCNT0_0-0
+	TCCR0B=$53,FOC0A-7,FOC0B-6,WGM02-3,CS02-2,CS01-1,CS00-0
+	MCUSR=$54,WDRF-3,BORF-2,EXTRF-1,PORF-0
+	MCUCR=$55,BODS-7,PUD-6,SE-5,SM1-4,SM0-3,BODSE-2,ISC01-1,ISC00-0
+	SPMCSR=$57,CTPB-4,RFLB-3,PGWRT-2,PGERS-1,SPMEN-0
+	TIFR=$58,OCF1A-6,OCF1B-5,OCF0A-4,OCF0B-3,TOV1-2,TOV0-1
+	TIMSK=$59,OCIE1A-6,OCIE1B-5,OCIE0A-4,OCIE0B-3,TOIE1-2,TOIE0-1
+	GIFR=$5A,INTF0-6,PCIF-5
+	GIMSK=$5B,INT0-6,PCIE-5
+	SPL=$5D,SP7-7,SP6-6,SP5-5,SP4-4,SP3-3,SP2-2,SP1-1,SP0-0
+	SPH=$5E,SP9-1,SP8-0
+	SREG=$5F,I-7,T-6,H-5,S-4,V-3,N-2,Z-1,C-0
+
+STK500
+	IspChipErase
+		eraseDelay=45
+		pollMethod=1
+	IspProgramFlash
+		mode=$41
+		blockSize=64
+		delay=10
+		cmd1=$40
+		cmd2=$4C
+		cmd3=$00
+		pollVal1=$00
+		pollVal2=$00
+	IspProgramEeprom
+		mode=$41
+		blockSize=4
+		delay=5
+		cmd1=$C1
+		cmd2=$C2
+		cmd3=$00
+		pollVal1=$00
+		pollVal2=$00
+	HvspControlStack=4C0C1C2C3C647466687868687A6A6878787D6D0C804020101108040203080400
+	HvspEnterProgMode
+		stabDelay=100
+		cmdexeDelay=0
+		synchCycles=6
+		latchCycles=1
+		toggleVtg=1
+		powoffDelay=25
+		resetDelay1=1
+		resetDelay2=0
+	HvspChipErase
+		pollTimeout=40
+		eraseTime=0
+	HvspProgramFlash
+		mode=$0D
+		blockSize=256
+		pollTimeout=5
+	HvspProgramEeprom
+		mode=$05
+		blockSize=256
+		pollTimeout=5
+
+STK600
+	IspChipErase
+		eraseDelay=45
+		pollMethod=1
+	IspProgramFlash
+		mode=$41
+		blockSize=64
+		delay=6
+		cmd1=$40
+		cmd2=$4C
+		cmd3=$00
+		pollVal1=$00
+		pollVal2=$00
+	IspProgramEeprom
+		mode=$41
+		blockSize=4
+		delay=5
+		cmd1=$C1
+		cmd2=$C2
+		cmd3=$00
+		pollVal1=$00
+		pollVal2=$00
+	HvspControlStack=4C0C1C2C3C647466687868687A6A6878787D6D0C804020101108040203080400
+	HvspEnterProgMode
+		stabDelay=100
+		cmdexeDelay=0
+		synchCycles=6
+		latchCycles=1
+		toggleVtg=1
+		powoffDelay=20
+		resetDelay1=0
+		resetDelay2=50
+	HvspChipErase
+		pollTimeout=40
+		eraseTime=0
+	HvspProgramFlash
+		mode=$0D
+		blockSize=256
+		pollTimeout=5
+	HvspProgramEeprom
+		mode=$05
+		blockSize=256
+		pollTimeout=5
+
+FUSES
+	EXTENDED
+		SELFPRGEN=$01,Self Programming enable
+	HIGH=$DF
+		RSTDISBL=$80,Reset Disabled (Enable PB5 as i/o pin)
+		DWEN=$40,Debug Wire enable
+		SPIEN=$20,Serial program downloading (SPI) enabled
+		WDTON=$10,Watch-dog Timer always on
+		EESAVE=$08,Preserve EEPROM through the Chip Erase cycle
+		BODLEVEL=$07,Brown-out Detector trigger level
+			$07=Brown-out detection disabled
+			$06=Brown-out detection at VCC=1.8 V
+			$05=Brown-out detection at VCC=2.7 V
+			$04=Brown-out detection at VCC=4.3 V
+	LOW=$62
+		CKDIV8=$80,Divide clock by 8 internally
+		CKOUT=$40,Clock output on PORTB4
+		SUT_CKSEL=$3F,Select Clock source
+			$00=Ext. Clock; Start-up time PWRDWN/RESET: 6 CK/14 CK + 0 ms
+			$10=Ext. Clock; Start-up time PWRDWN/RESET: 6 CK/14 CK + 4.1 ms
+			$20=Ext. Clock; Start-up time PWRDWN/RESET: 6 CK/14 CK + 65 ms
+			$01=PLL Clock; Start-up time PWRDWN/RESET: 1K CK/14 CK + 4 ms
+			$11=PLL Clock; Start-up time PWRDWN/RESET: 16K CK/14 CK + 4 ms
+			$21=PLL Clock; Start-up time PWRDWN/RESET: 1K CK/14 CK + 64 ms
+			$31=PLL Clock; Start-up time PWRDWN/RESET: 16K CK/14 CK + 64 ms
+			$02=Int. RC Osc. 8 MHz; Start-up time PWRDWN/RESET: 6 CK/14 CK + 0 ms
+			$12=Int. RC Osc. 8 MHz; Start-up time PWRDWN/RESET: 6 CK/14 CK + 4 ms
+			$22=Int. RC Osc. 8 MHz; Start-up time PWRDWN/RESET: 6 CK/14 CK + 64 ms
+			$03=ATtiny15 Comp: Int. RC Osc. 6.4 MHz; Start-up time PWRDWN/RESET: 6 CK/14 CK + 64 ms
+			$13=ATtiny15 Comp: Int. RC Osc. 6.4 MHz; Start-up time PWRDWN/RESET: 6 CK/14 CK + 64 ms
+			$23=ATtiny15 Comp: Int. RC Osc. 6.4 MHz; Start-up time PWRDWN/RESET: 6 CK/14 CK + 4 ms
+			$33=ATtiny15 Comp: Int. RC Osc. 6.4 MHz; Start-up time PWRDWN/RESET: 1 CK/14 CK + 0 ms
+			$04=WD. Osc. 128 kHz; Start-up time PWRDWN/RESET: 6 CK/14 CK + 0 ms
+			$14=WD. Osc. 128 kHz; Start-up time PWRDWN/RESET: 6 CK/14 CK + 4 ms
+			$24=WD. Osc. 128 kHz; Start-up time PWRDWN/RESET: 6 CK/14 CK + 64 ms
+			$06=Ext. Low-Freq. Crystal; Start-up time PWRDWN/RESET: 1K CK/14 CK + 0 ms
+			$16=Ext. Low-Freq. Crystal; Start-up time PWRDWN/RESET: 1K CK/14 CK + 4 ms
+			$26=Ext. Low-Freq. Crystal; Start-up time PWRDWN/RESET: 32K CK/14 CK + 64 ms
+			$08=Ext. Crystal Osc. 0.4-0.9 MHz; Start-up time PWRDWN/RESET: 258 CK/14 CK + 4.1 ms
+			$18=Ext. Crystal Osc. 0.4-0.9 MHz; Start-up time PWRDWN/RESET: 258 CK/14 CK + 65 ms
+			$28=Ext. Crystal Osc. 0.4-0.9 MHz; Start-up time PWRDWN/RESET: 1K CK /14 CK + 0 ms
+			$38=Ext. Crystal Osc. 0.4-0.9 MHz; Start-up time PWRDWN/RESET: 1K CK /14 CK + 4.1 ms
+			$09=Ext. Crystal Osc. 0.4-0.9 MHz; Start-up time PWRDWN/RESET: 1K CK /14 CK + 65 ms
+			$19=Ext. Crystal Osc. 0.4-0.9 MHz; Start-up time PWRDWN/RESET: 16K CK/14 CK + 0 ms
+			$29=Ext. Crystal Osc. 0.4-0.9 MHz; Start-up time PWRDWN/RESET: 16K CK/14 CK + 4.1 ms
+			$39=Ext. Crystal Osc. 0.4-0.9 MHz; Start-up time PWRDWN/RESET: 16K CK/14 CK + 65 ms
+			$0A=Ext. Crystal Osc. 0.9-3.0 MHz; Start-up time PWRDWN/RESET: 258 CK/14 CK + 4.1 ms
+			$1A=Ext. Crystal Osc. 0.9-3.0 MHz; Start-up time PWRDWN/RESET: 258 CK/14 CK + 65 ms
+			$2A=Ext. Crystal Osc. 0.9-3.0 MHz; Start-up time PWRDWN/RESET: 1K CK /14 CK + 0 ms
+			$3A=Ext. Crystal Osc. 0.9-3.0 MHz; Start-up time PWRDWN/RESET: 1K CK /14 CK + 4.1 ms
+			$0B=Ext. Crystal Osc. 0.9-3.0 MHz; Start-up time PWRDWN/RESET: 1K CK /14 CK + 65 ms
+			$1B=Ext. Crystal Osc. 0.9-3.0 MHz; Start-up time PWRDWN/RESET: 16K CK/14 CK + 0 ms
+			$2B=Ext. Crystal Osc. 0.9-3.0 MHz; Start-up time PWRDWN/RESET: 16K CK/14 CK + 4.1 ms
+			$3B=Ext. Crystal Osc. 0.9-3.0 MHz; Start-up time PWRDWN/RESET: 16K CK/14 CK + 65 ms
+			$0C=Ext. Crystal Osc. 3.0-8.0 MHz; Start-up time PWRDWN/RESET: 258 CK/14 CK + 4.1 ms
+			$1C=Ext. Crystal Osc. 3.0-8.0 MHz; Start-up time PWRDWN/RESET: 258 CK/14 CK + 65 ms
+			$2C=Ext. Crystal Osc. 3.0-8.0 MHz; Start-up time PWRDWN/RESET: 1K CK /14 CK + 0 ms
+			$3C=Ext. Crystal Osc. 3.0-8.0 MHz; Start-up time PWRDWN/RESET: 1K CK /14 CK + 4.1 ms
+			$0D=Ext. Crystal Osc. 3.0-8.0 MHz; Start-up time PWRDWN/RESET: 1K CK /14 CK + 65 ms
+			$1D=Ext. Crystal Osc. 3.0-8.0 MHz; Start-up time PWRDWN/RESET: 16K CK/14 CK + 0 ms
+			$2D=Ext. Crystal Osc. 3.0-8.0 MHz; Start-up time PWRDWN/RESET: 16K CK/14 CK + 4.1 ms
+			$3D=Ext. Crystal Osc. 3.0-8.0 MHz; Start-up time PWRDWN/RESET: 16K CK/14 CK + 65 ms
+			$0E=Ext. Crystal Osc. 8.0-    MHz; Start-up time PWRDWN/RESET: 258 CK/14 CK + 4.1 ms
+			$1E=Ext. Crystal Osc. 8.0-    MHz; Start-up time PWRDWN/RESET: 258 CK/14 CK + 65 ms
+			$2E=Ext. Crystal Osc. 8.0-    MHz; Start-up time PWRDWN/RESET: 1K CK /14 CK + 0 ms
+			$3E=Ext. Crystal Osc. 8.0-    MHz; Start-up time PWRDWN/RESET: 1K CK /14 CK + 4.1 ms
+			$0F=Ext. Crystal Osc. 8.0-    MHz; Start-up time PWRDWN/RESET: 1K CK /14 CK + 65 ms
+			$1F=Ext. Crystal Osc. 8.0-    MHz; Start-up time PWRDWN/RESET: 16K CK/14 CK + 0 ms
+			$2F=Ext. Crystal Osc. 8.0-    MHz; Start-up time PWRDWN/RESET: 16K CK/14 CK + 4.1 ms
+			$3F=Ext. Crystal Osc. 8.0-    MHz; Start-up time PWRDWN/RESET: 16K CK/14 CK + 65 ms
+
+LOCKBITS
+	LB=$03,Memory Lock
+		$00=Further programming and verification disabled
+		$02=Further programming disabled
+		$03=No memory lock features enabled
+
+

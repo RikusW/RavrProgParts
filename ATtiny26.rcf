@@ -1,0 +1,273 @@
+# vim:ts=4 sts=0 sw=4
+
+ADMIN
+	PART_NAME=ATtiny26
+	CORE_VERSION=V1a
+	SPEED=16MHZ
+	SIGNATURE=$1E9109
+	TOGGLE_PIN=N
+	OSCCAL=1.0,2.0,4.0,8.0
+	PROGIF=isp,hvpp
+
+MEMORY
+	FLASH=2048,32
+	EEPROM=128,4
+	IRAM=128,$60
+	ERAM=0,NA
+
+INTERRUPTS
+	$000=RESET
+	$001=INT0
+	$002=I/O_PINS
+	$003=TIMER1,CMPA
+	$004=TIMER1,CMPB
+	$005=TIMER1,OVF1
+	$006=TIMER0,OVF0
+	$007=USI_STRT
+	$008=USI_OVF
+	$009=EE_RDY
+	$00A=ANA_COMP
+	$00B=ADC
+
+IO_MODULE
+	AD_CONVERTER
+		LIST=[ADMUX:ADCSR:ADCH:ADCL]
+	ANALOG_COMPARATOR
+		LIST=[ACSR]
+	CPU
+		LIST=[SREG:SP:MCUCR:MCUSR:OSCCAL]
+	EEPROM
+		LIST=[EEAR:EEDR:EECR]
+	EXTERNAL_INTERRUPT
+		LIST=[GIMSK:GIFR]
+	PORTA
+		LIST=[PORTA:DDRA:PINA]
+	PORTB
+		LIST=[PORTB:DDRB:PINB]
+	TIMER_COUNTER_0
+		LIST=[TIMSK:TIFR:TCCR0:TCNT0]
+	TIMER_COUNTER_1
+		LIST=[TCCR1A:TCCR1B:TCNT1:OCR1A:OCR1B:OCR1C:TIMSK:TIFR:PLLCSR]
+	USI
+		LIST=[USIDR:USISR:USICR]
+	WATCHDOG
+		LIST=[WDTCR]
+
+IO_PORTS
+	ADCL=$24,ADCL7-7,ADCL6-6,ADCL5-5,ADCL4-4,ADCL3-3,ADCL2-2,ADCL1-1,ADCL0-0
+	ADCH=$25,ADCH7-7,ADCH6-6,ADCH5-5,ADCH4-4,ADCH3-3,ADCH2-2,ADCH1-1,ADCH0-0
+	ADCSR=$26,ADEN-7,ADSC-6,ADFR-5,ADIF-4,ADIE-3,ADPS2-2,ADPS1-1,ADPS0-0
+	ADMUX=$27,REFS1-7,REFS0-6,ADLAR-5,MUX4-4,MUX3-3,MUX2-2,MUX1-1,MUX0-0
+	ACSR=$28,ACD-7,ACBG-6,ACO-5,ACI-4,ACIE-3,ACME-2,ACIS1-1,ACIS0-0
+	USICR=$2D,USISIE-7,USIOIE-6,USIWM1-5,USIWM0-4,USICS1-3,USICS0-2,USICLK-1,USITC-0
+	USISR=$2E,USISIF-7,USIOIF-6,USIPF-5,USIDC-4,USICNT3-3,USICNT2-2,USICNT1-1,USICNT0-0
+	USIDR=$2F,USIDR7-7,USIDR6-6,USIDR5-5,USIDR4-4,USIDR3-3,USIDR2-2,USIDR1-1,USIDR0-0
+	PINB=$36,PINB7-7,PINB6-6,PINB5-5,PINB4-4,PINB3-3,PINB2-2,PINB1-1,PINB0-0
+	DDRB=$37,DDB7-7,DDB6-6,DDB5-5,DDB4-4,DDB3-3,DDB2-2,DDB1-1,DDB0-0
+	PORTB=$38,PORTB7-7,PORTB6-6,PORTB5-5,PORTB4-4,PORTB3-3,PORTB2-2,PORTB1-1,PORTB0-0
+	PINA=$39,PINA7-7,PINA6-6,PINA5-5,PINA4-4,PINA3-3,PINA2-2,PINA1-1,PINA0-0
+	DDRA=$3A,DDA7-7,DDA6-6,DDA5-5,DDA4-4,DDA3-3,DDA2-2,DDA1-1,DDA0-0
+	PORTA=$3B,PORTA7-7,PORTA6-6,PORTA5-5,PORTA4-4,PORTA3-3,PORTA2-2,PORTA1-1,PORTA0-0
+	EECR=$3C,EERIE-3,EEMWE-2,EEWE-1,EERE-0
+	EEDR=$3D,EEDR7-7,EEDR6-6,EEDR5-5,EEDR4-4,EEDR3-3,EEDR2-2,EEDR1-1,EEDR0-0
+	EEAR=$3E,EEAR6-6,EEAR5-5,EEAR4-4,EEAR3-3,EEAR2-2,EEAR1-1,EEAR0-0
+	WDTCR=$41,WDCE-4,WDE-3,WDP2-2,WDP1-1,WDP0-0
+	PLLCSR=$49,PCKE-2,PLLE-1,PLOCK-0
+	OCR1C=$4B,OCR1C7-7,OCR1C6-6,OCR1C5-5,OCR1C4-4,OCR1C3-3,OCR1C2-2,OCR1C1-1,OCR1C0-0
+	OCR1B=$4C,OCR1B7-7,OCR1B6-6,OCR1B5-5,OCR1B4-4,OCR1B3-3,OCR1B2-2,OCR1B1-1,OCR1B0-0
+	OCR1A=$4D,OCR1A7-7,OCR1A6-6,OCR1A5-5,OCR1A4-4,OCR1A3-3,OCR1A2-2,OCR1A1-1,OCR1A0-0
+	TCNT1=$4E,TCNT1_7-7,TCNT1_6-6,TCNT1_5-5,TCNT1_4-4,TCNT1_3-3,TCNT1_2-2,TCNT1_1-1,TCNT1_0-0
+	TCCR1B=$4F,CTC1-7,PSR1-6,CS13-3,CS12-2,CS11-1,CS10-0
+	TCCR1A=$50,COM1A1-7,COM1A0-6,COM1B1-5,COM1B0-4,FOC1A-3,FOC1B-2,PWM1A-1,PWM1B-0
+	OSCCAL=$51,CAL7-7,CAL6-6,CAL5-5,CAL4-4,CAL3-3,CAL2-2,CAL1-1,CAL0-0
+	TCNT0=$52,TCNT07-7,TCNT06-6,TCNT05-5,TCNT04-4,TCNT03-3,TCNT02-2,TCNT01-1,TCNT00-0
+	TCCR0=$53,PSR0-3,CS02-2,CS01-1,CS00-0
+	MCUSR=$54,WDRF-3,BORF-2,EXTRF-1,PORF-0
+	MCUCR=$55,PUD-6,SE-5,SM1-4,SM0-3,ISC01-1,ISC00-0
+	TIFR=$58,OCF1A-6,OCF1B-5,TOV1-2,TOV0-1
+	TIMSK=$59,OCIE1A-6,OCIE1B-5,TOIE1-2,TOIE0-1
+	GIFR=$5A,INTF0-6,PCIF-5
+	GIMSK=$5B,INT0-6,PCIE1-5,PCIE0-4
+	SP=$5D,SP7-7,SP6-6,SP5-5,SP4-4,SP3-3,SP2-2,SP1-1,SP0-0
+	SREG=$5F,I-7,T-6,H-5,S-4,V-3,N-2,Z-1,C-0
+
+STK500
+	IspChipErase
+		eraseDelay=20
+		pollMethod=0
+	IspProgramFlash
+		mode=$21
+		blockSize=16
+		delay=10
+		cmd1=$40
+		cmd2=$4C
+		cmd3=$20
+		pollVal1=$FF
+		pollVal2=$00
+	IspProgramEeprom
+		mode=$04
+		blockSize=64
+		delay=20
+		cmd1=$C0
+		cmd2=$00
+		cmd3=$A0
+		pollVal1=$FF
+		pollVal2=$FF
+	PPControlStack=C4E4C4E4CCECCCECD4F4D4F4DCFCDCFCC8E8D8F84C6C5C7CECBC000600000000
+	PpEnterProgMode
+		stabDelay=100
+		progModeDelay=0
+		latchCycles=5
+		toggleVtg=1
+		powerOffDelay=15
+		resetDelayMs=2
+		resetDelayUs=0
+	PpChipErase
+		pulseWidth=0
+		pollTimeout=20
+	PpProgramFlash
+		pollTimeout=10
+		mode=$0B
+		blockSize=256
+	PpProgramEeprom
+		pollTimeout=10
+		mode=$05
+		blockSize=256
+	PpProgramFuse
+		pulseWidth=0
+		pollTimeout=10
+	PpProgramLock
+		pulseWidth=0
+		pollTimeout=10
+
+STK600
+	IspChipErase
+		eraseDelay=20
+		pollMethod=0
+	IspProgramFlash
+		mode=$21
+		blockSize=16
+		delay=6
+		cmd1=$40
+		cmd2=$4C
+		cmd3=$20
+		pollVal1=$FF
+		pollVal2=$00
+	IspProgramEeprom
+		mode=$04
+		blockSize=64
+		delay=10
+		cmd1=$C0
+		cmd2=$00
+		cmd3=$A0
+		pollVal1=$FF
+		pollVal2=$FF
+	PPControlStack=0E1E0E1E2E3E2E3E4E5E4E5E6E7E6E7E061646560A1A4A5A1E7C000100000000
+	PpEnterProgMode
+		stabDelay=100
+		progModeDelay=0
+		latchCycles=5
+		toggleVtg=1
+		powerOffDelay=20
+		resetDelayMs=2
+		resetDelayUs=0
+	PpChipErase
+		pulseWidth=0
+		pollTimeout=20
+	PpProgramFlash
+		pollTimeout=10
+		mode=$0B
+		blockSize=256
+	PpProgramEeprom
+		pollTimeout=10
+		mode=$05
+		blockSize=256
+	PpProgramFuse
+		pulseWidth=0
+		pollTimeout=10
+	PpProgramLock
+		pulseWidth=0
+		pollTimeout=10
+
+FUSES
+	HIGH=$F7
+		RSTDISBL=$10,Reset Disabled (Enable PB7 as i/o pin)
+		SPIEN=$08,Serial program downloading (SPI) enabled
+		EESAVE=$04,Preserve EEPROM through the Chip Erase cycle
+		BODLEVEL=$02,Brown out detector trigger level
+			$00=Brown-out detection at VCC=4.0 V
+			$01=Brown-out detection at VCC=2.7 V
+		BODEN=$01,Brown-out detection enabled
+	LOW=$E1
+		CKOPT=$40,CKOPT fuse (operation dependent of CKSEL fuses)
+		PLLCK_SUT_CKSEL=$BF,Select Clock Source
+			$01=PLL Clock; Start-up time: 1K CK + 0 ms
+			$11=PLL Clock; Start-up time: 1K CK + 4 ms
+			$21=PLL Clock; Start-up time: 1K CK + 64 ms
+			$31=PLL Clock; Start-up time: 16K CK + 64 ms
+			$40=Ext. Clock; Start-up time: 6 CK + 0 ms
+			$50=Ext. Clock; Start-up time: 6 CK + 4 ms
+			$60=Ext. Clock; Start-up time: 6 CK + 64 ms
+			$41=Int. RC Osc. 1 MHz; Start-up time: 6 CK + 0 ms
+			$51=Int. RC Osc. 1 MHz; Start-up time: 6 CK + 4 ms
+			$61=Int. RC Osc. 1 MHz; Start-up time: 6 CK + 64 ms
+			$42=Int. RC Osc. 2 MHz; Start-up time: 6 CK + 0 ms
+			$52=Int. RC Osc. 2 MHz; Start-up time: 6 CK + 4 ms
+			$62=Int. RC Osc. 2 MHz; Start-up time: 6 CK + 64 ms
+			$83=Int. RC Osc. 4 MHz; Start-up time: 6 CK + 0 ms
+			$53=Int. RC Osc. 4 MHz; Start-up time: 6 CK + 4 ms
+			$63=Int. RC Osc. 4 MHz; Start-up time: 6 CK + 64 ms
+			$44=Int. RC Osc. 8 MHz; Start-up time: 6 CK + 0 ms
+			$54=Int. RC Osc. 8 MHz; Start-up time: 6 CK + 4 ms
+			$64=Int. RC Osc. 8 MHz; Start-up time: 6 CK + 64 ms
+			$45=Ext. RC Osc.         -  0.9 MHz; Start-up time: 18 CK + 0 ms
+			$55=Ext. RC Osc.         -  0.9 MHz; Start-up time: 18 CK + 4 ms
+			$65=Ext. RC Osc.         -  0.9 MHz; Start-up time: 18 CK + 64 ms
+			$75=Ext. RC Osc.         -  0.9 MHz; Start-up time: 6 CK + 4 ms
+			$46=Ext. RC Osc. 0.9 MHz -  3.0 MHz; Start-up time: 18 CK + 0 ms
+			$56=Ext. RC Osc. 0.9 MHz -  3.0 MHz; Start-up time: 18 CK + 4 ms
+			$66=Ext. RC Osc. 0.9 MHz -  3.0 MHz; Start-up time: 18 CK + 64 ms
+			$76=Ext. RC Osc. 0.9 MHz -  3.0 MHz; Start-up time: 6 CK + 4 ms
+			$87=Ext. RC Osc. 3.0 MHz -  8.0 MHz; Start-up time: 18 CK + 0 ms
+			$57=Ext. RC Osc. 3.0 MHz -  8.0 MHz; Start-up time: 18 CK + 4 ms
+			$67=Ext. RC Osc. 3.0 MHz -  8.0 MHz; Start-up time: 18 CK + 64 ms
+			$77=Ext. RC Osc. 3.0 MHz -  8.0 MHz; Start-up time: 6 CK + 4 ms
+			$58=Ext. RC Osc. 8.0 MHz - 12.0 MHz; Start-up time: 18 CK + 0 ms
+			$58=Ext. RC Osc. 8.0 MHz - 12.0 MHz; Start-up time: 18 CK + 4 ms
+			$68=Ext. RC Osc. 8.0 MHz - 12.0 MHz; Start-up time: 18 CK + 64 ms
+			$78=Ext. RC Osc. 8.0 MHz - 12.0 MHz; Start-up time: 6 CK + 4 ms
+			$49=Ext. Low-Freq. Crystal; Start-up time: 1K CK + 4 ms
+			$59=Ext. Low-Freq. Crystal; Start-up time: 1K CK + 64 ms
+			$69=Ext. Low-Freq. Crystal; Start-up time: 32K CK + 64 ms
+			$8A=Ext. Crystal/Resonator Low Freq.; Start-up time: 258 CK + 4 ms
+			$5A=Ext. Crystal/Resonator Low Freq.; Start-up time: 258 CK + 64 ms
+			$6A=Ext. Crystal/Resonator Low Freq.; Start-up time: 1K CK + 0 ms
+			$7A=Ext. Crystal/Resonator Low Freq.; Start-up time: 1K CK + 4 ms
+			$4B=Ext. Crystal/Resonator Low Freq.; Start-up time: 1K CK + 64 ms
+			$5B=Ext. Crystal/Resonator Low Freq.; Start-up time: 16K CK + 0 ms
+			$6B=Ext. Crystal/Resonator Low Freq.; Start-up time: 16K CK + 4 ms
+			$7B=Ext. Crystal/Resonator Low Freq.; Start-up time: 16K CK + 64 ms
+			$4C=Ext. Crystal/Resonator Medium Freq.; Start-up time: 258 CK + 4 ms
+			$5C=Ext. Crystal/Resonator Medium Freq.; Start-up time: 258 CK + 64 ms
+			$6C=Ext. Crystal/Resonator Medium Freq.; Start-up time: 1K CK + 0 ms
+			$7C=Ext. Crystal/Resonator Medium Freq.; Start-up time: 1K CK + 4 ms
+			$4D=Ext. Crystal/Resonator Medium Freq.; Start-up time: 1K CK + 64 ms
+			$5D=Ext. Crystal/Resonator Medium Freq.; Start-up time: 16K CK + 0 ms
+			$6D=Ext. Crystal/Resonator Medium Freq.; Start-up time: 16K CK + 4 ms
+			$7D=Ext. Crystal/Resonator Medium Freq.; Start-up time: 16K CK + 64 ms
+			$4E=Ext. Crystal/Resonator High Freq.; Start-up time: 258 CK + 4 ms
+			$5E=Ext. Crystal/Resonator High Freq.; Start-up time: 258 CK + 64 ms
+			$6E=Ext. Crystal/Resonator High Freq.; Start-up time: 1K CK + 0 ms
+			$7E=Ext. Crystal/Resonator High Freq.; Start-up time: 1K CK + 4 ms
+			$4F=Ext. Crystal/Resonator High Freq.; Start-up time: 1K CK + 64 ms
+			$5F=Ext. Crystal/Resonator High Freq.; Start-up time: 16K CK + 0 ms
+			$6F=Ext. Crystal/Resonator High Freq.; Start-up time: 16K CK + 4 ms
+			$7F=Ext. Crystal/Resonator High Freq.; Start-up time: 16K CK + 64 ms
+
+LOCKBITS
+	LB=$03,Memory Lock
+		$00=Further programming and verification disabled
+		$02=Further programming disabled
+		$03=No memory lock features enabled
+
+
